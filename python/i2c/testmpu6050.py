@@ -41,7 +41,9 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 # Formula to convert g's into units
 # 1 g = 9.80665 m/s^2 
-highgyrox, highgyroy, highgyroz = 0
+highgyrox = 0
+highgyroy = 0
+highgyroz = 0
 
 
 print (" ________ _____________________ _____________________ _____________________ _________________ _______________ _______________ _______________ ")
