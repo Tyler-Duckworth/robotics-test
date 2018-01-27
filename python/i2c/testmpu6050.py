@@ -51,7 +51,6 @@ while True:
   accy = read_word_2c(0x3d)*9.806665
   accz = read_word_2c(0x3f)*9.806665
 
-  highgyrox = 
 
   #TODO: not sure about scaling these, based on an example in german 
   #Inverted the accelerometer values for x and y to accurately show acceleration.
