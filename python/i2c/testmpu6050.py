@@ -58,6 +58,7 @@ while True:
   #TODO: not sure about scaling these, based on an example in german 
   #Inverted the accelerometer values for x and y to accurately show acceleration.
   print ("|  gyro  |  x: {0:5.1f}\u00b0  |  y: {1:5.1f}\u00b0  |  z: {2:5.1f}\u00b0  |  acc, in m/s^2  |  x: {3:5.1f}  |  y: {4:5.1f}  |  z: {5:5.1f}  |".format(gyrox, gyroy, gyroz, accx, accy, accz), end='\r')
+  print("\n")
   if highgyrox < gyrox:
       highgyrox = gyrox
   if highgyroy < gyroy:
