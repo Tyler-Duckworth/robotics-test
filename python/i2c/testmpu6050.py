@@ -1,4 +1,4 @@
-  #!/usr/bin/python
+ #!/usr/bin/python
 import smbus
 import math
 import time
@@ -38,19 +38,22 @@ bus = smbus.SMBus(1) # bus = smbus.SMBus(0) fuer Revision 1
 address = 0x68       # via i2cdetect
  
 bus.write_byte_data(address, power_mgmt_1, 0)
- 
+
+# Formula to convert g's into units
+# 1 g = 9.80665 m/s^2 
  
 while True:
   gyrox = read_word_2c(0x43)
   gyroy = read_word_2c(0x45)
   gyroz = read_word_2c(0x47)
  
-  accx = read_word_2c(0x3b)
-  accy = read_word_2c(0x3d)
-  accz = read_word_2c(0x3f)
+  accx = read_word_2c(0x3b)*9.806664
+  accy = read_word_2c(0x3d)*9.806665
+  accz = read_word_2c(0x3f)*9.806665
 
   #TODO: not sure about scaling these, based on an example in german 
-  print ("|  gyro  |  x: {0:5.1f}  |  y: {1:5.1f}  |  z: {2:5.1f}  |  acc  |  x: {3:5.1f}  |  y: {4:5.1f}  |  z: {5:5.1f}  |".format(gyrox/131, gyroy/131, gyroz/131, accx/16384.0, accy/16384.0, accz/16384.0), end='\r')
+  #Inverted the accelerometer values for x and y to accurately show acceleration.
+  print ("|  gyro  |  x: {0:5.1f}\u00b0  |  y: {1:5.1f}\u00b0  |  z: {2:5.1f}\u00b0  |  acc, in m/s^2  |  x: {3:5.1f}  |  y: {4:5.1f}  |  z: {5:5.1f}  |".format(gyrox/131, gyroy/131, gyroz/131, -(accx/16384.0), -(accy/16384.0), accz/16384.0), end='\r')
   xskalier = accx / 16384.0
   yskalier = accy / 16384.0
   zskalier = accz / 16384.0 
