@@ -41,6 +41,8 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 # Formula to convert g's into units
 # 1 g = 9.80665 m/s^2 
+highgyrox, highgyroy, highgyroz = 0
+
 
 print (" ________ _____________________ _____________________ _____________________ _________________ _______________ _______________ _______________ ")
 while True:
@@ -52,7 +54,6 @@ while True:
   accy = (read_word_2c(0x3d)/16384.0)*9.806665
   accz = (read_word_2c(0x3f)/16384.0)*9.806665
 
-  highgyrox, highgyroy, highgyroz = 0
 
   #TODO: not sure about scaling these, based on an example in german 
   #Inverted the accelerometer values for x and y to accurately show acceleration.
