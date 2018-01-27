@@ -41,7 +41,8 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 # Formula to convert g's into units
 # 1 g = 9.80665 m/s^2 
- 
+
+print (" ________ _____________________ _____________________ _____________________ _________________ _______________ _______________ _______________ ")
 while True:
   gyrox = read_word_2c(0x43)
   gyroy = read_word_2c(0x45)
@@ -54,14 +55,14 @@ while True:
 
   #TODO: not sure about scaling these, based on an example in german 
   #Inverted the accelerometer values for x and y to accurately show acceleration.
-  print (" ________ _____________________ _____________________ _____________________ _________________ _______________ _______________ _______________ ").format(end="\r")
   print ("|  gyro  |  x: {0:5.1f}\u00b0  |  y: {1:5.1f}\u00b0  |  z: {2:5.1f}\u00b0  |  acc, in m/s^2  |  x: {3:5.1f}  |  y: {4:5.1f}  |  z: {5:5.1f}  |".format(gyrox/131, gyroy/131, gyroz/131, accx/16384.0, accy/16384.0, accz/16384.0), end='\r')
-  print (" -------- --------------------- --------------------- --------------------- ----------------- --------------- --------------- --------------- ").format(end="\r")
   xskalier = accx / 16384.0
   yskalier = accy / 16384.0
   zskalier = accz / 16384.0 
   #print ("acc x:{0:3f} y:{1:3f} z:{2:3f}".format(accx/16384.0, accy/16384.0, accz/16384.0), end='\r')
  
   time.sleep(0.5)  
+print (" -------- --------------------- --------------------- --------------------- ----------------- --------------- --------------- --------------- ")
+
  
  
